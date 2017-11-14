@@ -11,8 +11,8 @@ NPM
 npm install
 rm dist/*.zip
 npm run build-aws-zip
-If have no function on AWS
+#If have no function on AWS
 npm create-aws-function
-if created already
+#if created already
 npm update-aws-function
 ```
