@@ -4,19 +4,14 @@
   "description": "This closed open HPs in Dynamo DB table OpenHotPotatoes.",
   "main": "src/openHotPotatoMailerHandler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-aws-zip": "zip -r dist/package.zip src node_modules",
+    "create-aws-function": "aws --profile landrys lambda create-function --function-name openHotPotatoMailerHandler --runtime nodejs6.10 --role arn:aws:iam::419745589400:role/lambda_basic_execution --description 'Send emails to respective store managers including open hot potatoes over a day old from dynamo db table OpenHotPotatoes' --handler src/openHotPotatoMailerHandler.openHotPotatoMailerHandler --zip-file fileb://dist/package.zip",
+    "update-aws-function": "aws --profile landrys lambda update-function-code --function-name openHotPotatoMailerHandler --zip-file fileb://dist/package.zip"
   },
-
   "files": [
     "dist",
     "src"
   ],
-
-  "scripts": {
-      "build-aws-zip": "zip -r dist/package.zip src node_modules",
-      "create-aws-function": "aws --profile landrys lambda create-function --function-name openHotPotatoMailerHandler --runtime nodejs6.10 --role arn:aws:iam::419745589400:role/lambda_basic_execution --description 'Send emails to respective store managers including open hot potatoes over a day old from dynamo db table OpenHotPotatoes' --handler src/openHotPotatoMailerHandler.openHotPotatoMailerHandler --zip-file fileb://dist/package.zip",
-      "update-aws-function": "aws --profile landrys lambda update-function-code --function-name openHotPotatoMailerHandler --zip-file fileb://dist/package.zip"
-  },
   "keywords": [],
   "author": "Fabio Piergentili",
   "license": "ISC",
