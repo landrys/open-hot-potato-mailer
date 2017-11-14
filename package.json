@@ -1,7 +1,7 @@
 {
-  "name": "hotPotatoCloser",
+  "name": "openHotPotatoMailer",
   "version": "1.0.0",
-  "description": "This closed open HPs in Dynamo DB table OpenHotPotatoes.",
+  "description": "Mailes open hot potatoes more than a day old to store managers.",
   "main": "src/openHotPotatoMailerHandler.js",
   "scripts": {
     "build-aws-zip": "zip -r dist/package.zip src node_modules",
