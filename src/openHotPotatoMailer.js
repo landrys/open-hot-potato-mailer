@@ -49,16 +49,15 @@ module.exports.openHotPotatoMailer = function(store) {
 
             let body = 'These open hotpotatoes have been open for over a day. Details are included below.\n';;
 
-            // TODO put in managers email
-            //let manager = 'landryseleven@gmail.com,jleland@landrys.com';
-            let manager = 'fpiergen@landrys.com';
+            let manager = 'landryseleven@gmail.com,jleland@landrys.com';
+            //let manager = 'fpiergen@landrys.com';
 
-            /*
+            
             if (hpsToEmail.length > 0) {
                 manager =  hpsToEmail[0].manager.S + "," + manager;
                 console.log(manager);
             }
-            */
+            
 
             hpsToEmail.forEach(function(element) {
                 body = body + buildBody(element);
