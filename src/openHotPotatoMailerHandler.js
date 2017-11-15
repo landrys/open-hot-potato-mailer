@@ -6,6 +6,7 @@ exports.openHotPotatoMailerHandler = function(event, context) {
     // Not using event info 
     console.log("Hello" + JSON.stringify(event, null, '  '));
     var store = event.store;
+    mailer.setDebug(event.debug);
 
     mailer.openHotPotatoMailer('Braintree');
     mailer.openHotPotatoMailer('Boston');
