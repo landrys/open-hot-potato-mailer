@@ -1,10 +1,10 @@
 {
   "name": "openHotPotatoMailer",
   "version": "1.0.0",
-  "description": "Mailes open hot potatoes more than a day old to store managers.",
+  "description": "Mails open hot potatoes more than a day old to store managers.",
   "main": "src/openHotPotatoMailerHandler.js",
   "scripts": {
-    "build-aws-zip": "zip -r dist/package.zip src node_modules",
+    "build-aws-zip": "rm -rf dist/* && zip -r dist/package.zip src node_modules",
     "create-aws-function": "aws --profile landrys lambda create-function --function-name openHotPotatoMailerHandler --runtime nodejs6.10 --role arn:aws:iam::419745589400:role/lambda_basic_execution --description 'Send emails to respective store managers including open hot potatoes over a day old from dynamo db table OpenHotPotatoes' --handler src/openHotPotatoMailerHandler.openHotPotatoMailerHandler --zip-file fileb://dist/package.zip",
     "update-aws-function": "aws --profile landrys lambda update-function-code --function-name openHotPotatoMailerHandler --zip-file fileb://dist/package.zip"
   },
@@ -16,8 +16,18 @@
   "author": "Fabio Piergentili",
   "license": "ISC",
   "dependencies": {
+    "js-common": "git+https://github.com/landrys/js-common.git",
     "js-joda": "^1.6.2",
     "js-joda-timezone": "^1.1.5",
     "nodemailer": "^4.4.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/landrys/open-hot-potato-mailer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/landrys/open-hot-potato-mailer/issues"
+  },
+  "homepage": "https://github.com/landrys/open-hot-potato-mailer#readme"
 }

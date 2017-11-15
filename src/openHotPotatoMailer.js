@@ -10,9 +10,15 @@ var ZonedDateTime = jsJoda.ZonedDateTime;
 var ZoneId = jsJoda.ZoneId;
 var Duration = jsJoda.Duration;
 
-var myMailer = require('./myNodeMailer');
+var myMailer = require('js-common');
+var debug = true;
 
+module.exports.setDebug = function(newDebug) {
+    debug = newDebug; 
+}
 
+if (typeof(debug) === 'undefined')
+    debug = true;
 /* 
  * Will check if any need to be emailed to manager of the given store.
  */
@@ -49,15 +55,16 @@ module.exports.openHotPotatoMailer = function(store) {
 
             let body = 'These open hotpotatoes have been open for over a day. Details are included below.\n';;
 
-            let manager = 'landryseleven@gmail.com,jleland@landrys.com';
-            //let manager = 'fpiergen@landrys.com';
-
+            let manager = 'fpiergen@landrys.com';
             
-            if (hpsToEmail.length > 0) {
-                manager =  hpsToEmail[0].manager.S + "," + manager;
-                console.log(manager);
+            if (!debug) {
+                manager = 'landryseleven@gmail.com,jleland@landrys.com';
+                if (hpsToEmail.length > 0) {
+                    manager = hpsToEmail[0].manager.S + "," + manager;
+                }
             }
             
+            console.log(manager);
 
             hpsToEmail.forEach(function(element) {
                 body = body + buildBody(element);
